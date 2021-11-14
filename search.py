@@ -5,6 +5,7 @@ Quickly search your matching string in a given list of strings
 """
 
 from typing import List
+import argparse
 
 
 class Solution:
@@ -36,13 +37,13 @@ class Solution:
         """
 
         self.words = words
-        
+    
 
     def find(self, match_string: str) -> List[str]:
-        """Prints what the animals name is and what sound it makes.
+        """Find the list of words from given list with match_string.
 
-        If the argument `sound` isn't passed in, the default Animal
-        sound is used.
+        If the arguments are not valid then raising exceptions.
+
 
         Parameters
         ----------
@@ -56,12 +57,15 @@ class Solution:
 
         Raises
         ------
-        NotImplementedError
-            If string to match is empty
+        ValueError
+            If string to match is empty or type other than str
         """
 
-        if self.match_string == "":
-            raise NotImplementedError("Empty matching string is not supported!")
+        if type(match_string) != str:
+            raise ValueError("matching string of type other than str is not supported!")
+
+        if match_string == "":
+            raise ValueError("Empty matching string is not supported!")
 
 
         matched_words = []
@@ -69,9 +73,15 @@ class Solution:
         # for each word/string in words
         for word in self.words:
             
+            # if input string is not str then skip
             if type(word) != str:
-                raise ValueError("Only considering string as of now!")
-                
+                continue
+
+            # if match_string is gt then the input word then skip
+            # bcoz the match_string will not found in input word
+
+            if len(match_string) > len(word):
+                continue
 
             # counter to maintain the 
             # len of consecutive search chars
@@ -79,6 +89,7 @@ class Solution:
             match_counter = 0
             
             # for each char in word
+            
             for char in word:
                 
                 # if char is present in given string to match 
@@ -99,3 +110,15 @@ class Solution:
 
         return matched_words
 
+
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description='String finder')
+    parser.add_argument('-l', '--words', help='List of strings to search in', required=True)
+    parser.add_argument('-m', '--match_string', help='string to search in list of strings/words', required=True)
+
+    args = parser.parse_args()
+
+    solution = Solution(args.words.split(","))
+    matched_words = solution.find(args.match_string)
+    print(matched_words)

@@ -16,31 +16,31 @@ class Solution:
 
     Attributes
     ----------
-    words : List[str]
-        a list of strings/words
+    input_strings_list : List[str]
+        a list of strings
     match_string : str
-        the string to match in list of strings/words
+        the string to match in list of strings
 
     Methods
     -------
     find(match_string)
-        Prints the list of strings/words which have match_string in any order
+        Prints the list of strings which have match_string in any order
     """
 
 
-    def __init__(self, words: List[str]):
+    def __init__(self, input_strings_list: List[str]):
         """
         Parameters
         ----------
-        words : List[str]
-            The list of strings/words
+        input_strings_list : List[str]
+            The list of strings
         """
 
-        self.words = words
+        self.input_strings_list = input_strings_list
     
 
     def find(self, match_string: str) -> List[str]:
-        """Find the list of words from given list with match_string.
+        """Find the list of strings from given list with match_string.
 
         If the arguments are not valid then raising exceptions.
 
@@ -48,12 +48,12 @@ class Solution:
         Parameters
         ----------
         match_string : str
-            The string to find in given list of strings/words
+            The string to find in given list of strings
 
         Returns
         -------
-        matched_words: List[str]
-            The list of strings/words found with given matching string sequence
+        matched_strings_list: List[str]
+            The list of strings found with given matching string sequence
 
         Raises
         ------
@@ -62,25 +62,25 @@ class Solution:
         """
 
         if type(match_string) != str:
-            raise ValueError("matching string of type other than str is not supported!")
+            raise ValueError("matching string of type other than type str is not supported!")
 
         if match_string == "":
             raise ValueError("Empty matching string is not supported!")
 
 
-        matched_words = []
+        matched_strings_list = []
 
-        # for each word/string in words
-        for word in self.words:
+        # for each input_string in input_strings_list
+        for input_string in self.input_strings_list:
             
             # if input string is not str then skip
-            if type(word) != str:
+            if type(input_string) != str:
                 continue
 
-            # if match_string is gt then the input word then skip
-            # bcoz the match_string will not found in input word
+            # if len(match_string) is gt then len(input_string) then skip
+            # bcoz the match_string will not found in input input_string
 
-            if len(match_string) > len(word):
+            if len(match_string) > len(input_string):
                 continue
 
             # counter to maintain the 
@@ -88,9 +88,9 @@ class Solution:
 
             match_counter = 0
             
-            # for each char in word
+            # for each char in input_strings
             
-            for char in word:
+            for char in input_string:
                 
                 # if char is present in given string to match 
                 # i.e. in match_string (consecutive)
@@ -104,21 +104,21 @@ class Solution:
                 # then stop iterating over the string
 
                 if len(match_string) == match_counter: 
-                    matched_words.append(word)
+                    matched_strings_list.append(input_string)
                     break
 
 
-        return matched_words
+        return matched_strings_list
 
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='String finder')
-    parser.add_argument('-l', '--words', help='List of strings to search in', required=True)
-    parser.add_argument('-m', '--match_string', help='string to search in list of strings/words', required=True)
+    parser.add_argument('-l', '--input_strings_list', help='List of strings to search in', required=True)
+    parser.add_argument('-m', '--match_string', help='string to search in list of strings', required=True)
 
     args = parser.parse_args()
 
-    solution = Solution(args.words.split(","))
-    matched_words = solution.find(args.match_string)
-    print(matched_words)
+    solution = Solution(args.input_strings_list.split(","))
+    matched_strings_list = solution.find(args.match_string)
+    print(matched_strings_list)

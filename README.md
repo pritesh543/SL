@@ -52,5 +52,8 @@ pytest -v test_search.py
 python test_search.py
 ```
 
+# Detailed Document
+*[Analysis&Approach](https://github.com/pritesh543/SL/blob/main/Approach_And_Analysis.docx)
+
 ## License
 None

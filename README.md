@@ -11,16 +11,28 @@ Search string will search in the list of given strings in any order and return a
 
 ## Installation
 
-This module requires [python](https://www.python.org/) 3.8+ to run.
+This module is written in [python](https://www.python.org/) 3.8+.
 
-This module does not require any additional dependencies. Just unzip the attachment and go to the dir and execute the below module with your existing virtualenv.
+This module does not require any additional dependencies. Just unzip the attachment and go to the dir and execute the below module with your existing virtualenv. 
 
+### Clone the repository
+
+```bash
+git clone https://github.com/pritesh543/SL.git
+cd SL
+```
+
+### OR | Download the Zip
+Just extract the zip and go to the folder inside.
+
+```bash
+cd SL
+```
 Open your favorite Terminal and run these commands.
 
 Main Code:
 
 ```python
-cd SL
 python search.py -l "{list of words - comma separated}" -m "{seach string}"
 # python search.py -l "seo,show,team,highlight,esopot" -m "eos"
 # ["seo","esopot"]

@@ -18,7 +18,7 @@ test_search.py # contains the test cases for the module
 
 ## Installation
 
-This module is written in [python](https://www.python.org/) 3.8+.
+This module is written in [python](https://www.python.org/) 3.10.0.
 
 This module does not require any additional dependencies. Just unzip the attachment and go to the dir and execute the below module with your existing virtualenv. 
 

@@ -9,6 +9,13 @@ Search string will search in the list of given strings in any order and return a
 - Accepts command line arguments for search
 - Deals with only string types as of now
 
+## Quick Overview
+```python
+search.py # the main file which contains the algorithm to find strings
+test_search.py # contains the test cases for the module
+```
+
+
 ## Installation
 
 This module is written in [python](https://www.python.org/) 3.8+.
